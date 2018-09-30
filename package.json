@@ -1,0 +1,19 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d .next"
+  },
+  "dependencies": {
+    "@octokit/rest": "^15.12.1",
+    "gh-pages": "^2.0.0",
+    "next": "7.0.1",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
+    "react-markdown": "^3.6.0"
+  },
+  "homepage": "https://albertextensions.github.io"
+}
