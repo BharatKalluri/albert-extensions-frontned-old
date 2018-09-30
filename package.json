@@ -4,8 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d .next"
+    "export": "next export"
   },
   "dependencies": {
     "@octokit/rest": "^15.12.1",
