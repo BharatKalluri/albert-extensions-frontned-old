@@ -143,6 +143,7 @@ class Repo extends React.Component {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
           }
           .card {
             padding: 18px 18px 24px;

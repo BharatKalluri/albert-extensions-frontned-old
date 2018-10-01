@@ -13,7 +13,7 @@ export default class InstallSteps extends React.Component {
         <Nav />
 
         <div className="hero">
-          <div className="content">
+          <div className="col">
             <h1 className="title">Installation steps</h1>
             <h4>Step 1:</h4>
             <p>
@@ -67,6 +67,7 @@ export default class InstallSteps extends React.Component {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
           }
           .card {
             padding: 18px 18px 24px;
