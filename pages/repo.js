@@ -3,6 +3,8 @@ import Head from '../components/head'
 import Nav from '../components/nav'
 import {withRouter} from 'next/router'
 
+import Link from 'next/link'
+
 const ReactMarkdown = require('react-markdown')
 
 const octokit = require('@octokit/rest')()
@@ -65,6 +67,16 @@ class Repo extends React.Component {
     }
   }
 
+  imageRenderer = props => {
+    return <img
+              src={props.src}
+              alt={props.alt}
+              style={{
+                width:"100%"
+              }}
+            />
+  }
+
   render() {
 
     let repoData = this.state.repoData
@@ -83,7 +95,7 @@ class Repo extends React.Component {
 
           <div className="col">
             <h3>Installation Instructions</h3>
-            <em>After completing Installation Steps</em>
+            <div><em>After completing <Link href={`/install`}>Installation Instructions</Link></em></div>
             <code>git clone {this.state.repoData.html_url} /usr/share/albert/org.albert.extension.python/modules/{this.state.repoData.name}</code>
           </div>
           
@@ -93,15 +105,15 @@ class Repo extends React.Component {
                     transformImageUri={this.getLinkTarget}
                     skipHtml={false}
                     escapeHtml={false}
+                    renderers={{image:this.imageRenderer}}
                 />
           </div>
-
-
         </div>
 
         <style jsx>{`
           .hero {
-            width: 100%;
+            width: 90vw;
+            padding:3vw;
             color: #333;
             display: flex;
             flex-direction: column;

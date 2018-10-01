@@ -6,6 +6,8 @@ import Nav from '../components/nav'
 
 const octokit = require('@octokit/rest')()
 
+const excluded_repos = ["Ideas"]
+
 export default class Home extends React.Component {
 
   constructor(props) {
@@ -46,12 +48,14 @@ export default class Home extends React.Component {
           </p>
 
           <div className="row">
-            {this.state.repoData.map((item,i)=>(
+            {this.state.repoData.filter((item)=>{
+              if (!excluded_repos.includes(item.name)) {return item}
+            }).map((item,i)=>(
               <Link href={`/repo?name=${item.full_name}`} key={i}>
-                <a className="card">
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                </a>
+                  <a className="card">
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                  </a>
               </Link>
             ))}
           </div>

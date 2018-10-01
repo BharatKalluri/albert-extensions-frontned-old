@@ -36,7 +36,8 @@ export default class InstallSteps extends React.Component {
 
         <style jsx>{`
           .hero {
-            width: 100%;
+            width: 90vw;
+            padding:3vw;
             color: #333;
             display: flex;
             flex-direction: column;
@@ -46,7 +47,7 @@ export default class InstallSteps extends React.Component {
           .title {
             margin: 0;
             width: 100%;
-            padding-top: 80px;
+            padding-top: 60px;
             line-height: 1.15;
             font-size: 48px;
           }
@@ -55,11 +56,16 @@ export default class InstallSteps extends React.Component {
             text-align: center;
           }
           .row {
-            max-width: 90vw;
             margin: 5vw auto 5vw;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             flex-wrap: wrap;
+            justify-content: center;
+          }
+          .col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
           }
           .card {
