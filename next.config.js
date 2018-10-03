@@ -2,7 +2,6 @@ module.exports = {
   exportPathMap: async function (defaultPathMap) {
     return {
       '/': { page: '/' },
-      '/install': { page: '/install' },
       '/repo': { page: '/repo' },
     }
   },
