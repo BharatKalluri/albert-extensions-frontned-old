@@ -94,9 +94,10 @@ class Repo extends React.Component {
           <hr></hr>
 
           <div className="col">
-            <h3>Installation Instructions</h3>
-            <div><em>After completing <Link href={`/install`}>Installation Instructions</Link></em></div>
-            <code>git clone {this.state.repoData.html_url} /usr/share/albert/org.albert.extension.python/modules/{this.state.repoData.name}</code>
+            <p>
+              <h3>Installation Instructions</h3>
+              <code>git clone {this.state.repoData.html_url} ~/.local/share/albert/org.albert.extension.python/modules/{this.state.repoData.name}</code>
+            </p>
           </div>
           
           <div className="row">

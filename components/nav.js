@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 const links = [
-  { href: '/install', label: 'Installation steps' },
   { href: 'https://github.com/albertlauncher/albert', label: 'Github' }
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
