@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 const links = [
-  { href: 'https://github.com/albertlauncher/albert', label: 'Github' }
+  // { href: 'https://github.com/albertlauncher/albert', label: 'Github' }
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
@@ -10,49 +10,22 @@ const links = [
 
 const Nav = () => (
   <nav>
-    <ul>
-      <li>
+    <div className="nav-wrapper purple">
         <Link prefetch href="/">
-          <a>Home</a>
+          <a className="brand-logo center">Alberthub</a>
         </Link>
-      </li>
-      <ul>
-        {links.map(({ key, href, label }) => (
-          <li key={key}>
-            <Link href={href}>
-              <a>{label}</a>
-            </Link>
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li>
+            {links.map(({ key, href, label }) => (
+              <li key={key}>
+                <Link href={href}>
+                  <a>{label}</a>
+                </Link>
+              </li>
+            ))}
           </li>
-        ))}
-      </ul>
-    </ul>
-
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
+        </ul>
+    </div>
   </nav>
 )
 
