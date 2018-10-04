@@ -60,11 +60,11 @@ export default class Home extends React.Component {
             A hub for Albert extensions
           </h5>
 
-          <div className="row container">
+          <div className="row container-fluid">
             {this.state.repoData.filter((item)=>{
               if (!excluded_repos.includes(item.name)) {return item}
                 }).map((item,i)=>(
-                <div className="col s12 m4">
+                <div className="col s12 m6 l4">
                 <div class="card card-small purple">
                   <div className="card-content white-text">
                     <span class="card-title">{item.name}</span>
