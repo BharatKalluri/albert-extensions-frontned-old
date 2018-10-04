@@ -13,7 +13,8 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      repoData: []
+      repoData: [],
+      showLoading: false
     }
   }
 
@@ -34,6 +35,18 @@ export default class Home extends React.Component {
     })
   }
 
+  loadingLine = () => {
+    if (this.state.showLoading) {
+      return (
+        <div className="progress">
+            <div className="indeterminate"></div>
+        </div>
+      )
+    } else {
+      return(<div></div>)
+    }
+  }
+
   render() {
 
     return (
@@ -42,6 +55,7 @@ export default class Home extends React.Component {
         <Nav />
 
         <div>
+          <this.loadingLine/>
           <h5 className="center-align">
             A hub for Albert extensions
           </h5>

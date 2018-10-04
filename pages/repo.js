@@ -15,7 +15,8 @@ class Repo extends React.Component {
     super(props)
     this.state = {
       repoData: {},
-      readmeData: ""
+      readmeData: "",
+      showLoading: true
     }
   }
 
@@ -48,7 +49,8 @@ class Repo extends React.Component {
             repo: repoName[1]
         }).then((response)=>{
             this.setState({
-                readmeData: atob(response['data']['content'])
+                readmeData: atob(response['data']['content']),
+                showLoading: false
             })
         }).catch((err)=>{
             console.error(err)
@@ -77,8 +79,19 @@ class Repo extends React.Component {
             />
   }
 
-  render() {
+  loadingLine = () => {
+    if (this.state.showLoading) {
+      return (
+        <div className="progress">
+            <div className="indeterminate"></div>
+        </div>
+      )
+    } else {
+      return(<div></div>)
+    }
+  }
 
+  render() {
     let repoData = this.state.repoData
 
     return (
@@ -87,14 +100,19 @@ class Repo extends React.Component {
         <Nav />
 
         <div className="container">
-          <h1 class="header center blue-text">{repoData.name}</h1>
+          <this.loadingLine/>
+          <h1 className="header center blue-text">{repoData.name}</h1>
           <div className="row center">
             <h5>{repoData.description}</h5>
             <h7>{repoData.html_url}</h7>
           </div>
           <div className="row center">
             <h6>Installation Instructions</h6>
-            <code>git clone {this.state.repoData.html_url} ~/.local/share/albert/org.albert.extension.python/modules/{this.state.repoData.name}</code>
+            <pre className="language-markup" style={{overflow: "auto"}}>
+              <code>
+                git clone {this.state.repoData.html_url} ~/.local/share/albert/org.albert.extension.python/modules/{this.state.repoData.name}
+              </code>
+            </pre>
           </div>
           <div className="row">
                 <ReactMarkdown 
