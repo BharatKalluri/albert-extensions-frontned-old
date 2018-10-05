@@ -2,7 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 
 const links = [
-  // { href: 'https://github.com/albertlauncher/albert', label: 'Github' }
+  { href: '/ideas', label: 'Ideas' },
+  { href: 'https://github.com/albertlauncher/albert', label: 'Github'}
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
@@ -12,7 +13,7 @@ const Nav = () => (
   <nav>
     <div className="nav-wrapper purple">
         <Link prefetch href="/">
-          <a className="brand-logo center">Alberthub</a>
+          <a className="brand-logo" style={{paddingLeft:"10px"}}>Alberthub</a>
         </Link>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>

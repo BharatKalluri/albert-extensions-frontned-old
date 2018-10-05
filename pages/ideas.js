@@ -6,14 +6,12 @@ import Nav from '../components/nav'
 
 const octokit = require('@octokit/rest')()
 
-const excluded_repos = ["Ideas"]
-
-export default class Home extends React.Component {
+export default class Ideas extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      repoData: [],
+      ideasData: [],
       showLoading: false
     }
   }
@@ -23,12 +21,13 @@ export default class Home extends React.Component {
   }
 
   getRepos() {
-    octokit.repos.getForOrg({
-      org: 'AlbertExtensions',
-      type: 'public'
+    octokit.issues.getForRepo({
+      owner: 'AlbertExtensions',
+      repo: 'Ideas'
     }).then((response)=>{
+        console.log(response['data'])
       this.setState({
-        repoData: response['data']
+        ideasData: response['data']
       })
     }).catch((err)=>{
       console.error(err)
@@ -57,23 +56,24 @@ export default class Home extends React.Component {
         <div>
           <this.loadingLine/>
           <h5 className="center-align">
-            A hub for Albert extensions
+            Ideas for new Albert extensions
           </h5>
+          <p className="center-align">
+            If you wish to add an Idea, create an issue in <Link href="https://github.com/AlbertExtensions/Ideas">this repo.</Link>
+            Feel free to upvote ideas.
+          </p>
 
           <div className="row container-fluid">
-            {this.state.repoData.filter((item)=>{
-              if (!excluded_repos.includes(item.name)) {return item}
-                }).map((item,i)=>(
+            {this.state.ideasData.map((item,i)=>(
                 <div className="col s12 m6 l4">
                 <div class="card card-small">
-                  <div className="card-content text">
-                    <span class="card-title"><b>{item.name}</b></span>
-                    <p>{item.description}</p>
+                  <div className="card-content">
+                    <span class="card-title"><b>{item.title}</b></span>
                   </div>
                   <div className="card-action">
-                  <Link href={`/repo?name=${item.full_name}`}>
-                    <a className="waves-effect waves-light btn purple darken-1">Install</a>
-                  </Link>
+                    <Link href={item.html_url}>
+                        <a className="waves-effect waves-light btn purple darken-1">Upvote</a>
+                    </Link>
                   </div>
                 </div>
                 </div>
