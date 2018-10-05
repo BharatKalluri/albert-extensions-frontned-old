@@ -9,25 +9,25 @@ const links = [
   return link
 })
 
-const Nav = () => (
-  <nav>
-    <div className="nav-wrapper purple">
-        <Link prefetch href="/">
-          <a className="brand-logo" style={{paddingLeft:"10px"}}>Alberthub</a>
-        </Link>
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li>
-            {links.map(({ key, href, label }) => (
-              <li key={key}>
-                <Link href={href}>
-                  <a>{label}</a>
-                </Link>
-              </li>
-            ))}
-          </li>
-        </ul>
-    </div>
-  </nav>
-)
-
-export default Nav
+export default class Nav extends React.Component {
+  render() {
+    return (
+      <nav>
+        <div className="nav-wrapper purple">
+            <Link prefetch href="/">
+              <a className="brand-logo left" style={{paddingLeft:"10px"}}>Alberthub</a>
+            </Link>
+            <ul className="right">
+                {links.map(({ key, href, label }) => (
+                  <li key={key}>
+                    <Link href={href}>
+                      <a>{label}</a>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+        </div>
+      </nav>
+    )
+  }
+}
