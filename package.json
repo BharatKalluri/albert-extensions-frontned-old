@@ -9,10 +9,10 @@
   "dependencies": {
     "@octokit/rest": "^15.12.1",
     "gh-pages": "^2.0.0",
-    "next": "7.0.1",
+    "next": "^7.0.0",
     "npm": "^6.4.1",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-markdown": "^3.6.0"
   },
   "homepage": "https://albertextensions.github.io"
